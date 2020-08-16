@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>AddressBook Management System</title>
+<a th:href = "@{/showNewAddressBook}" class="btn btn-primary btn-sm mb-3"> Add New Address </a>
+</head>
+<body>
+
+ <div align="center">
+ <h1>AddressBook</h1>
+ 
+  <table border="1" class = "table table-striped table-responsive-md">
+   <thead>
+    <tr>
+     <th>First Name</th>
+     <th>Last Name</th>
+     <th>Address</th>
+     <th>City</th>
+     <th>State</th>
+     <th>Zip</th>
+     <th>Phone</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="employee : ${listUsers}">
+     <td th:text="${employee.firstName}"></td>
+     <td th:text="${employee.lastName}"></td>
+     <td th:text="${employee.address}"></td>
+     <td th:text="${employee.city}"></td>
+     <td th:text="${employee.state}"></td>
+     <td th:text="${employee.zip}"></td>
+     <td th:text="${employee.phone}"></td>
+     <td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}">Update</a>
+     <a th:href="@{/deleteAddress/{id}(id=${employee.id})}">Delete</a>
+     
+     </td>
+     
+    </tr>
+   </tbody>
+  </table>
+ </div>
+</body>
+</html>
